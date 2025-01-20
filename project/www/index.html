@@ -40,7 +40,6 @@
     <li><a href="#test4">Categoría Tecnología</a></li>
   </ul>
 
-  <!-- Main Content -->
   <div class="container">
     <div class="row">
       <div class="col s12">
@@ -63,11 +62,11 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Inicializar el sidenav
+     
       var elemsSidenav = document.querySelectorAll('.sidenav');
       M.Sidenav.init(elemsSidenav);
 
-      // Inicializar las pestañas con funcionalidad swipe
+      
       var elemsTabs = document.querySelectorAll('.tabs');
       M.Tabs.init(elemsTabs, {
         swipeable: true
@@ -89,13 +88,13 @@
           url = `https://newsapi.org/v2/everything?q=technology&apiKey=${apiKey}`;
         }
 
-        // Verifica si la URL se ha generado correctamente
+        // ESTO Verifica si la URL se ha generado correctamente
         if (!url) {
           console.error("No URL for category: " + category);
           return;
         }
 
-        // Realizar la solicitud AJAX
+        // con esto se realiza la solicitud AJAX
         $.ajax({
           url: url,
           method: 'GET',
@@ -109,7 +108,7 @@
             var articles = response.articles;
             var output = '';
 
-            // Generar el contenido HTML
+            
             articles.forEach(function(article) {
               output += '<div class="card">';
               output += '<div class="card-image">';
@@ -125,7 +124,7 @@
               output += '</div>';
             });
 
-            // Insertar el contenido en el div correspondiente
+            
             let element = document.querySelector(`[data-id='${elementId}']`);
             if (element) {
               element.innerHTML = output;
@@ -143,7 +142,7 @@
         });
       }
 
-      // Cargar noticias al inicializar
+      // Carga las noticias
       loadNews('latest', 'news-latest');
       loadNews('space', 'news-space');
       loadNews('science', 'news-science');
